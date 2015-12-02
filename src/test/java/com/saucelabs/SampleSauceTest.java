@@ -52,7 +52,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 
     @Rule public TestName name = new TestName() {
         public String getMethodName() {
-                return String.format("%s : (%s %s %s)", super.getMethodName(), os, browser, version);
+                return super.getMethodName();
         };
     };
     /**
@@ -118,9 +118,9 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     public static LinkedList browsersStrings() {
         LinkedList browsers = new LinkedList();
      //   browsers.add(new String[]{"Windows 8.1", "11", "internet explorer", "kristianTest2"});
-     //   browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
+        browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
      //   browsers.add(new String[]{"Windows 7", "10", "internet explorer", });   
-        browsers.add(new String[]{"Windows XP", "42", "chrome"});   
+     //   browsers.add(new String[]{"Windows XP", "42", "chrome"});   
      //   browsers.add(new String[]{"Windows XP", "36", "firefox"});      
      //   browsers.add(new String[]{"OSX 10.8", "6", "safari"});
      //   browsers.add(new String[]{"OSX 10.10", "8", "safari"});
@@ -155,7 +155,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         String methodName = name.getMethodName();
-       // capabilities.setCapability("name", methodName);
+        capabilities.setCapability("name", methodName);
        // capabilities.setCapability("tunnel-identifier", tunnelIdentifier);
 
         this.driver = new RemoteWebDriver(
@@ -164,7 +164,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
                 capabilities);
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
-        String message = String.format("SauceOnDemandSessionID=%1$s", this.sessionId, methodName);
+        String message = String.format("SauceOnDemandSessionID=%1$s job-name=", this.sessionId, methodName);
     } 
          
     /**
