@@ -42,7 +42,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      * Constructs a {@link SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
      * supplied by environment variables or from an external file, use the no-arg {@link SauceOnDemandAuthentication} constructor.
      */
-    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("kristianmeiersl", "69c9ea29-59c8-4b3a-9909-18b1b05343f6");
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("kristianmeiersl", "5654145f-77f1-49aa-94d2-428831e575a9");
 
     /**
      * JUnit Rule which will mark the Sauce Job as passed/failed when the test succeeds or fails.
@@ -52,7 +52,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 
     @Rule public TestName name = new TestName() {
         public String getMethodName() {
-                return super.getMethodName();
+                return String.format("%s", super.getMethodName());
         };
     };
     /**
@@ -119,19 +119,19 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         LinkedList browsers = new LinkedList();
      //   browsers.add(new String[]{"Windows 8.1", "11", "internet explorer", "kristianTest2"});
         browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
-     //   browsers.add(new String[]{"Windows 7", "10", "internet explorer", });   
-     //   browsers.add(new String[]{"Windows XP", "42", "chrome"});   
-     //   browsers.add(new String[]{"Windows XP", "36", "firefox"});      
-     //   browsers.add(new String[]{"OSX 10.8", "6", "safari"});
-     //   browsers.add(new String[]{"OSX 10.10", "8", "safari"});
-     //   browsers.add(new String[]{"Linux", "5.1", "Android"}); 
-     //   browsers.add(new String[]{"OSX 10.10", "8.2", "iPhone"});
-     //   browsers.add(new String[]{"Windows 8", "10", "internet explorer"}); 
-     //   browsers.add(new String[]{"Windows 7", "9", "internet explorer"});   
-     //   browsers.add(new String[]{"Windows XP", "39", "chrome"});   
-     //   browsers.add(new String[]{"Windows 8", "40", "firefox"});
-     //   browsers.add(new String[]{"Windows 10", "11", "internet explorer"});
-     //   browsers.add(new String[]{"Windows 10", "43", "Chrome"}); 
+      //  browsers.add(new String[]{"Windows 7", "10", "internet explorer", });   
+      //  browsers.add(new String[]{"Windows XP", "42", "chrome"});   
+      //  browsers.add(new String[]{"Windows XP", "36", "firefox"});      
+      //  browsers.add(new String[]{"OSX 10.8", "6", "safari"});
+      //  browsers.add(new String[]{"OSX 10.10", "8", "safari"});
+      //  browsers.add(new String[]{"Linux", "5.1", "Android"}); 
+      //  browsers.add(new String[]{"OSX 10.10", "8.2", "iPhone"});
+      //  browsers.add(new String[]{"Windows 8", "10", "internet explorer"}); 
+      //  browsers.add(new String[]{"Windows 7", "9", "internet explorer"});   
+      //  browsers.add(new String[]{"Windows XP", "39", "chrome"});   
+      //  browsers.add(new String[]{"Windows 8", "40", "firefox"});
+      //  browsers.add(new String[]{"Windows 10", "11", "internet explorer"});
+      //  browsers.add(new String[]{"Windows 10", "43", "Chrome"}); 
 
    
         return browsers;
@@ -164,7 +164,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
                 capabilities);
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
-        String message = String.format("SauceOnDemandSessionID=%1$s job-name=", this.sessionId, methodName);
+        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", this.sessionId, methodName);
     } 
          
     /**
@@ -207,7 +207,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         driver.findElement(By.id("submit")).click();
         Thread.sleep(5000);
                 
-       
+        
     }  
 
     /**
