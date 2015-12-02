@@ -155,7 +155,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         String methodName = name.getMethodName();
-        capabilities.setCapability("name", methodName);
+       // capabilities.setCapability("name", methodName);
        // capabilities.setCapability("tunnel-identifier", tunnelIdentifier);
 
         this.driver = new RemoteWebDriver(
@@ -164,7 +164,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
                 capabilities);
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
-        String message = String.format("SauceOnDemandSessionID=%1$s", this.sessionId);
+        String message = String.format("SauceOnDemandSessionID=%1$s", this.sessionId, methodName);
     } 
          
     /**
